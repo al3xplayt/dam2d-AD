@@ -1,5 +1,9 @@
 package alumnos.principal;
 
+import alumnos.acceso.AccesoCodigo;
+import alumnos.modelo.Alumno;
+import entrada.Teclado;
+
 public class ManipulacionAlumnado {
 	public static void escribirMenu() {
 		/* 
@@ -19,6 +23,10 @@ public class ManipulacionAlumnado {
 	}
 
 	public static void main(String[] args) {
+		Alumno alumno = null;
+		int codigo = 0;
+		String nombre, apellido, fechaNacimiento, grupo;
+		double nota1, nota2;
 		try {
 			do {
                 escribirMenu();
@@ -30,10 +38,19 @@ public class ManipulacionAlumnado {
                 switch (opcion) {
                 case 1:
                     // Insertar un alumno en el fichero.
-                	
+                	//1;Carlos;Vazquez;31/10/1999;DAM1A;3,36;8,06
+                	codigo = AccesoCodigo.obtenerCodigo();
+                	nombre = Teclado.leerCadena("Introduce el nombre del alumno: ");
+                    apellido = Teclado.leerCadena("Introduce el apellido del alumno: ");
+                	fechaNacimiento = Teclado.leerCadena("Introduce la fecha de nacimiento del alumno: ");
+                	grupo = Teclado.leerCadena("Introduce el grupo del alumno: ");
+                	nota1 = Teclado.leerReal("Introduce la nota 1 del alumno: ");
+                	nota2 = Teclado.leerReal("Introduce la nota 2 del alumno: ");
+                	alumno = new Alumno(codigo, nombre, apellido, fechaNacimiento, grupo, nota1, nota2);
                     break;
                 case 2:
                     // Actualizar el nombre, el apellido y la fecha de nacimiento de un alumno del fichero por código.
+                	
                     break;
                 case 3:
                     // Actualizar la nota final 1 de los alumnos del fichero que están asignados a un grupo con una puntuación extra.
