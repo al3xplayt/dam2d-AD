@@ -10,7 +10,7 @@ public class Alumno {
 	public Alumno(int codigo, String nombre, String apellido, String fechaNacimiento, String grupo, double nota1,
 			double nota2) {
 		super();
-		this.codigo = poblacion++;
+		this.codigo = codigo;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaNacimiento = fechaNacimiento;

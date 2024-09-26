@@ -85,7 +85,37 @@ public class AccesoAlumno {
 			if (writer != null) {
 				writer.close();
 			}
+			
 		}
 	}
-	
+	public static boolean eliminarAlumnoPorCodigo(int codigo) throws IOException {
+        List<Alumno> alumnosAux = new ArrayList<>();
+        List<Alumno> alumnos = new ArrayList<>();
+        alumnosAux = ConsultarAlumnos();
+        for (Alumno alum : alumnosAux) {
+			if (alum.getCodigo() != codigo) {
+				alumnos.add(alum);
+			}
+        }
+        BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(FicheroAlumnos));
+			for (Alumno alumno : alumnos) {
+				writer.write(alumno.toCSV());
+				writer.newLine();
+			}
+		} catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } 
+		finally {
+			if (writer != null) {
+				writer.close();
+			}
+		}
+		return true;
+        
+    }
 }
+	
+

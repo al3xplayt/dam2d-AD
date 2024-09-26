@@ -1,5 +1,4 @@
 1;Carlos;Vazquez;31/10/1999;DAM1A;3,36;8,06
-2;Sara;Gomez;10/11/1994;DAM1A;4,10;5,35
 3;Pilar;Ramírez;31/01/1990;DAM1A;1,15;7,93
 6;Alejandro;Pérez;09/06/1987;DAM1B;4,86;0,76
 7;Francisco;López;18/10/2000;DAM1B;1,92;0,92
