@@ -28,7 +28,7 @@ public class AccesoEmpleado {
 				// una nueva
 				// cabecera de fichero
 				flujosalida2 = new MyObjectOutputStream(new FileOutputStream(fichero, true));
-				flujoSalida.writeObject(emple);
+				flujosalida2.writeObject(emple); 
 			} else {
 				flujoSalida = new ObjectOutputStream(new FileOutputStream(fichero));
 				flujoSalida.writeObject(emple);

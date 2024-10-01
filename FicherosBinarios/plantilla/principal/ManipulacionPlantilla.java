@@ -2,6 +2,7 @@ package plantilla.principal;
 
 import alumnos.acceso.AccesoCodigo;
 import entrada.Teclado;
+import plantilla.acceso.AccesoEmpleado;
 import plantilla.modelo.Empleado;
 
 public class ManipulacionPlantilla {
@@ -37,7 +38,8 @@ public class ManipulacionPlantilla {
 					salario = Teclado.leerReal("Introduce el salario: ");
 					Empleado emple = new Empleado(codigo, nombre, apellidos, fechaAlta, departamento, salario);
 					//Guardar empleado
-					
+					AccesoEmpleado.InsertarEmpleado(emple);
+					System.out.println("Empleado insertado");
 					break;
 				default:
 					System.out.println("Opción incorrecta");
@@ -45,6 +47,7 @@ public class ManipulacionPlantilla {
 				}
 			} while (opcion != 0);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
