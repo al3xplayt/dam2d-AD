@@ -99,7 +99,7 @@ public class AccesoAlumno {
         }
         BufferedWriter writer = null;
 		try {
-			writer = new BufferedWriter(new FileWriter(FicheroAlumnos));
+			writer = new BufferedWriter(new FileWriter(FicheroAlumnos, false));
 			for (Alumno alumno : alumnos) {
 				writer.write(alumno.toCSV());
 				writer.newLine();
