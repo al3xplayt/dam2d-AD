@@ -30,7 +30,7 @@ public class ManipulacionPlantilla {
 				case 1:
 					//Inseertar empleado
 					//int codigo, String nombre, String apellidos, String fechaAlta, String departamento,double salario	
-					codigo = AccesoCodigo.obtenerCodigo()+1;
+					codigo = plantilla.acceso.AccesoCodigo.obtenerCodigo()+1;
 					nombre = Teclado.leerCadena("Introduce el nombre: ");
 					apellidos = Teclado.leerCadena("Introduce los apellidos: ");
 					fechaAlta = Teclado.leerCadena("Introduce la fecha de alta: ");
@@ -39,6 +39,7 @@ public class ManipulacionPlantilla {
 					Empleado emple = new Empleado(codigo, nombre, apellidos, fechaAlta, departamento, salario);
 					//Guardar empleado
 					AccesoEmpleado.InsertarEmpleado(emple);
+					plantilla.acceso.AccesoCodigo.guardarCodigo(codigo);
 					System.out.println("Empleado insertado");
 					break;
 				default:

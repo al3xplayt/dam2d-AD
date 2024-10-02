@@ -15,7 +15,7 @@ import plantilla.modelo.Empleado;
 
 public class AccesoEmpleado {
 
-	public static final String RUTA = "dataBin/empleados.dat";
+	public static final String RUTA = "dataBin/empleado.dat";
 
 	public static void InsertarEmpleado(Empleado emple) throws FileNotFoundException, IOException {
 		ObjectOutputStream flujoSalida = null;
@@ -27,6 +27,7 @@ public class AccesoEmpleado {
 				// Si el fichero ya existe, añadimos el empleado al final del fichero sin crear
 				// una nueva
 				// cabecera de fichero
+				System.out.println("Existe");
 				flujosalida2 = new MyObjectOutputStream(new FileOutputStream(fichero, true));
 				flujosalida2.writeObject(emple); 
 			} else {

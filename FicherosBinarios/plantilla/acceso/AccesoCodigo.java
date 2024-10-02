@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AccesoCodigo {
-	public static final String RUTA = "dataBinario/codigo.dat";
+	public static final String RUTA = "dataBin/codigo.dat";
 	public static int obtenerCodigo() throws IOException {
 		DataInputStream flujoEntrada = null;
 		int codigo = 0;
