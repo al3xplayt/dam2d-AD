@@ -28,6 +28,35 @@ public class Empleado implements Serializable{
 		return "Empleado [codigo=" + codigo + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaAlta="
 				+ fechaAlta + ", departamento=" + departamento + ", salario=" + salario + "]";
 	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+	public void setFechaAlta(String fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public String getDepartamento() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public double getSalario() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }
