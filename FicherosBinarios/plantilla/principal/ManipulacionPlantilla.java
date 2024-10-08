@@ -1,6 +1,5 @@
 package plantilla.principal;
 
-import alumnos.acceso.AccesoCodigo;
 import entrada.Teclado;
 import plantilla.acceso.AccesoEmpleado;
 import plantilla.modelo.Empleado;

@@ -125,17 +125,6 @@ public class AccesoEmpleado {
 		}
 		return null;
     }
-	public static void actualizarSalarioPorDepartamento(String departamento, double aumento) throws ClassNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		List<Empleado> empleados = consultarTodos();
-		for (Empleado emple : empleados) {
-			if (emple.getDepartamento().equals(departamento)) {
-				double aumentoReal = emple.getSalario() * (aumento/100);
-				emple.setSalario(emple.getSalario() + aumentoReal);
-			}
-		}
-		sobreescribirTodos(empleados);
-	}
 
 	public static void sobreescribirTodos(List<Empleado> empleados) {
 		File fichero = new File(RUTA);
