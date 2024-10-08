@@ -11,6 +11,7 @@ public class ConsultarPlantilla {
 	public static void EscrituraMenu() {
 		System.out.println("0) Salir");
 		System.out.println("1) Consultar empleados");
+		System.out.println("2) Consultar un empleado del fichero por código.");
 	}
 
 	public static void main(String[] args) {
@@ -33,6 +34,16 @@ public class ConsultarPlantilla {
 						AccesoEmpleado.escribirEmpleados(empleados);
 					}
 					break;
+				case 2:
+					// Consultar un empleado del fichero por código
+                    int codigo = Teclado.leerEntero("Introduce el código del empleado: ");
+                    Empleado empleado = AccesoEmpleado.consultarPorCodigo(codigo);
+                    if (empleado != null) {
+                        System.out.println(empleado.toString());
+                    } else {
+                        System.out.println("Empleado no encontrado");
+                    }
+                    break;
 				default:
 					System.out.println("Opción incorrecta");
 					break;
