@@ -7,6 +7,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path="FicherosSecuenciales"/>
 	<classpathentry kind="src" path="FicherosBinarios"/>
+	<classpathentry kind="src" path="FicherosDirectorio"/>
 	<classpathentry kind="lib" path="lib/teclado.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
