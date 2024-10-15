@@ -90,6 +90,23 @@ public class AccesoEmpleado {
 	    sobreescribirTodos(empleados);
 		return true;
 	}
+	public static void actualizarPorCodigoV2(int codigo, String nombre, String apellido, String departamento) {
+		//Usando un ficheroi temporal
+		ObjectInputStream flujoLectura = null;
+		ObjectOutputStream flujoSalida = null;
+		File fichero = new File(RUTA);
+		boolean actualizado = false;
+		try {
+			flujoLectura = new ObjectInputStream(new FileInputStream(fichero));
+			File ficheroTemporal = new File(RUTA);
+			
+		} catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	
+        }
+           
+	}
 
 	public static Empleado consultarPorCodigo(int codigo) throws ClassNotFoundException, IOException {
         List<Empleado> empleados = consultarTodos();
