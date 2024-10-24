@@ -45,4 +45,33 @@ public class AccesoLibro {
 		}
 	}
 	
+	public static List<Libro> consultarLibrosPorNombreAutor (String nombreAutor) throws SQLException{
+		List<Libro> libros = new ArrayList<>();
+		Connection conexion = null;
+		try {
+			conexion = ConfigBD.conectarseABD();
+			String codigoSQL = "SELECT l.* FROM libro as l "
+					+ "JOIN escritor as e "
+					+ "ON l.codigo_escritor = e.codigo "
+					+ "WHERE e.nombre = ? ORDER by l.agno_publicacion ASC";
+			PreparedStatement sentencia = conexion.prepareStatement(codigoSQL);
+			sentencia.setString(1, nombreAutor);
+			ResultSet resultados = sentencia.executeQuery();
+			while (resultados.next()) {
+				int codigoLibro = resultados.getInt("codigo");
+				int codigoAutor = resultados.getInt("codigo_escritor");
+				int agnoPublicacion = resultados.getInt("agno_publicacion");
+				int numeroPaginas = resultados.getInt("numero_paginas");
+				double precio = resultados.getDouble("precio");
+				String titulo = resultados.getString("titulo");
+				Libro libro = new Libro(codigoLibro, codigoAutor, agnoPublicacion, numeroPaginas, precio, titulo);
+				libros.add(libro);
+			}
+		}finally {
+			ConfigBD.desconectar(conexion);
+		}
+		
+		return libros;
+	}
+	
 }
