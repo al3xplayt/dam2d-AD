@@ -19,6 +19,13 @@ public class Escritor {
 		}
 
 	}
+	
+
+	public Escritor(int codigo) {
+		super();
+		this.codigo = codigo;
+	}
+
 
 	@Override
 	public String toString() {

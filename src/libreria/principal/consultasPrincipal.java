@@ -13,7 +13,7 @@ import libreria.acceso.AccesoEscritor;
 import libreria.acceso.AccesoLibro;
 import libreria.acceso.AccesoTienda;
 
-public class consultasPrincipal {
+public class ConsultasPrincipal {
 	public static void escribirMenu() {
 		System.out.println("0) Salir");
 		System.out.println("1) Consultar todos los escritores de la base de datos, en orden por nombre ascendente.");
@@ -92,14 +92,27 @@ public class consultasPrincipal {
 				case 5:
 					// 5) Consultar los libros de un escritor de la base de datos, en orden por año
 					// de publicación ascendente.
-					codigoEscritor = Teclado.leerEntero("Introduce el código del escritor: ");
-					libros = AccesoLibro.consultarLibroPorEscritor(codigoEscritor);
+					String nombre = Teclado.leerCadena("Introduce el nombre del escritor: ");
+					libros = AccesoLibro.consultarLibrosPorNombreAutor(nombre);
 					if (libros.isEmpty()) {
 						System.out.println("No hay escritores en la base de datos.");
 					} else {
 						AccesoLibro.escribirListaLibros(libros);
 					}
 					break;
+				case 6:
+					// 6) Consultar el título y el año de publicación de los libros no disponibles
+					// de la
+					// base de datos.
+					libros = AccesoLibro.consultarLibrosNoDisponibles();
+					if (libros.isEmpty()) {
+						System.out.println("No hay libros no disponibles en la base de datos.");
+					} else {
+						for (Libro lib : libros) {
+							System.out.println("[Titulo = "+lib.getTitulo() + ",  Año publicación = " + lib.getAgnoPublicacion()+"]");
+						}
+					}
+					break;	
 				}
 			} while (opcion != 0);
 		} catch (SQLException e) {

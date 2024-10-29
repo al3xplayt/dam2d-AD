@@ -41,4 +41,67 @@ public class AccesoEscritor {
 			System.out.println(escritor.toString());
 		}
 	}
+	
+	public static boolean insertarEscritor(Escritor escritor) throws SQLException, ClassNotFoundException {
+		Connection conexion = null;
+		boolean insertado = false;
+		int filas = 0;
+		try {
+			conexion = ConfigBD.conectarseABD();
+			String codigoSQL = "INSERT INTO escritor (nombre, nacionalidad, fecha_nacimiento, fecha_fallecimiento) VALUES (?, ?, ?, ?)";
+			
+			PreparedStatement sentencia = conexion.prepareStatement(codigoSQL);
+			sentencia.setString(1, escritor.getNombre());
+			sentencia.setString(2, escritor.getNacionalidad());
+			sentencia.setString(3, escritor.getFechaNacimiento().toString());
+			if (escritor.getFecchaFallecimiento() == null) {
+				sentencia.setString(4, null);
+			} else {
+				sentencia.setString(4, escritor.getFecchaFallecimiento().toString());
+			}
+			filas = sentencia.executeUpdate();
+			insertado = filas > 0;
+		} finally {
+			ConfigBD.desconectar(conexion);
+		};
+		return filas != 0;
+	}
+
+	public static void actualizarEscritor (Escritor escritor) throws SQLException, ClassNotFoundException{
+		Connection conexion = null;
+		try {
+			conexion = ConfigBD.conectarseABD();
+            String codigoSQL = "UPDATE escritor SET nombre = ?, nacionalidad = ?, fecha_nacimiento = ?, fecha_fallecimiento = ? WHERE codigo = ?";
+            
+            PreparedStatement sentencia = conexion.prepareStatement(codigoSQL);
+            sentencia.setString(1, escritor.getNombre());
+            sentencia.setString(2, escritor.getNacionalidad());
+            sentencia.setString(3, escritor.getFechaNacimiento().toString());
+            if (escritor.getFecchaFallecimiento() == null) {
+                sentencia.setString(4, null);
+            } else {
+                sentencia.setString(4, escritor.getFecchaFallecimiento().toString());
+            }
+            sentencia.setInt(5, escritor.getCodigo());
+            sentencia.executeUpdate();
+        } finally {
+            ConfigBD.desconectar(conexion);
+		}
+	}
+
+	public static void eliminarEscritor(Escritor escritor) throws SQLException {
+		Connection conexion = null;
+        try {
+            conexion = ConfigBD.conectarseABD();
+            String codigoSQL = "DELETE FROM escritor WHERE codigo = ?";
+            PreparedStatement sentencia = conexion.prepareStatement(codigoSQL);
+            sentencia.setInt(1, escritor.getCodigo());
+            sentencia.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConfigBD.desconectar(conexion);
+        }
+		
+	}
 }

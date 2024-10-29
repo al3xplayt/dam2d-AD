@@ -3,14 +3,21 @@ package libreri.modelo;
 public class Disponibilidad {
 	private Libro libro;
 	private Tienda tienda;
-	private int cantidad;
+	private int cantidad, codlib, codtienda;
 	private Fecha ultimaReposicion;
-	public Disponibilidad(Libro libro, Tienda tienda, int cantidad, Fecha ultimaReposicion) {
+	public Disponibilidad(Libro libro, Tienda tienda, int cantidad, String ultimaReposicion) {
 		super();
 		this.libro = libro;
 		this.tienda = tienda;
 		this.cantidad = cantidad;
-		this.ultimaReposicion = ultimaReposicion;
+		this.ultimaReposicion = new Fecha(ultimaReposicion);
+	}
+	public Disponibilidad(int libro2, int tienda2, int cantidad2, String fecha) {
+		// TODO Auto-generated constructor stub
+		this.codlib = libro2;
+		this.codtienda = tienda2;
+		this.cantidad = cantidad2;
+		this.ultimaReposicion = new Fecha(fecha);
 	}
 	@Override
 	public String toString() {

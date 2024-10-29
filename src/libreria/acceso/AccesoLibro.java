@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import libreri.modelo.Escritor;
 import libreri.modelo.Libro;
 
 public class AccesoLibro {
@@ -29,7 +30,8 @@ public class AccesoLibro {
 				int numeroPaginas = resultados.getInt("numero_paginas");
 				double precio = resultados.getDouble("precio");
 				String titulo = resultados.getString("titulo");
-				libro = new Libro(codigoLibro, codigoAutor, agnoPublicacion, numeroPaginas, precio, titulo);
+				Escritor escritor = new Escritor(codigoAutor);
+				libro = new Libro(codigoLibro, escritor, agnoPublicacion, numeroPaginas, precio, titulo);
 				libros.add(libro);
 			}
 		} finally {
@@ -45,7 +47,7 @@ public class AccesoLibro {
 		}
 	}
 	
-	public static List<Libro> consultarLibrosPorNombreAutor (String nombreAutor) throws SQLException{
+	public static List<Libro> consultarLibrosPorNombreAutor (String nombreAutor) throws SQLException, ClassNotFoundException{
 		List<Libro> libros = new ArrayList<>();
 		Connection conexion = null;
 		try {
@@ -69,6 +71,28 @@ public class AccesoLibro {
 			}
 		}finally {
 			ConfigBD.desconectar(conexion);
+		}
+		
+		return libros;
+	}
+
+	public static List<Libro> consultarLibrosNoDisponibles() throws ClassNotFoundException, SQLException {
+		List<Libro> libros = new ArrayList<>();
+		Connection conexion = null;
+		try {
+			conexion = ConfigBD.conectarseABD();
+			String codigoSQL = "SELECT lib.titulo, lib.agno_publicacion FROM libro"
+					+ " as lib JOIN disponibilidad as disp on lib.codigo = disp.codigo_libro WHERE disp.cantidad = 0";
+			PreparedStatement sentencia = conexion.prepareStatement(codigoSQL);
+			ResultSet resultados = sentencia.executeQuery();
+			while (resultados.next()) {
+				String titulo = resultados.getString("titulo");
+				int agnoPublicacion = resultados.getInt("agno_publicacion");
+				Libro libro = new Libro(titulo, agnoPublicacion);
+				libros.add(libro);
+			}
+		} finally {
+            ConfigBD.desconectar(conexion);
 		}
 		
 		return libros;
