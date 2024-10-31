@@ -19,6 +19,7 @@ public class Disponibilidad {
 		this.cantidad = cantidad2;
 		this.ultimaReposicion = new Fecha(fecha);
 	}
+
 	@Override
 	public String toString() {
 		return "Disponibilidd [libro=" + libro.getCodigo() + ", tienda=" + tienda.getCodigo() + ", cantidad=" + cantidad + ", ultimaReposicion="

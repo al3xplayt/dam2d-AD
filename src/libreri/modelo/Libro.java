@@ -1,14 +1,16 @@
 package libreri.modelo;
 
 public class Libro {
-	private int codigo,codigoAutor, agnoPublicacion, numeroPaginas;
+	private int codigo, agnoPublicacion, numeroPaginas;
 	private double precio;
 	private String titulo;
 	private Escritor escritor;
-	public Libro(int codigo, Escritor codigoAutor, int agnoPublicacion, int numeroPaginas, double precio, String titulo) {
+	
+	
+	public Libro(int codigo, Escritor Autor, int agnoPublicacion, int numeroPaginas, double precio, String titulo) {
 		super();
 		this.codigo = codigo;
-		this.escritor = codigoAutor;
+		this.escritor = Autor;
 		this.agnoPublicacion = agnoPublicacion;
 		this.numeroPaginas = numeroPaginas;
 		this.precio = precio;
@@ -25,16 +27,7 @@ public class Libro {
 	
 	
 	
-	public Libro(int codigoLibro, int codigoAutor, int agnoPublicacion2, int numeroPaginas2, double precio2,
-			String titulo2) {
-		super();
-		this.codigo = codigoLibro;
-		this.codigoAutor = codigoAutor;
-		this.agnoPublicacion = agnoPublicacion2;
-		this.numeroPaginas = numeroPaginas2;
-		this.precio = precio2;
-		this.titulo = titulo2;
-	}
+
 	@Override
 	public String toString() {
 		return "Libro [codigo=" + codigo + ", codigoAutor=" + escritor.getCodigo() + ", agnoPublicacion=" + agnoPublicacion

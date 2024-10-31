@@ -26,7 +26,7 @@ public class AccesoDisponibilidad {
                 String ultimaReposicion = resultado.getString("fecha_ultima_reposicion");
                 Libro libro = new Libro(codigoLibro);
                 Tienda tienda = new Tienda(codigoTienda);
-                disponibilidad = new Disponibilidad(libro, tienda, cantidad, new Fecha(ultimaReposicion));
+                disponibilidad = new Disponibilidad(libro, tienda, cantidad, ultimaReposicion);
 			}
 		} finally {
 			ConfigBD.desconectar(conexion);

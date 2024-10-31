@@ -66,7 +66,8 @@ public class AccesoLibro {
 				int numeroPaginas = resultados.getInt("numero_paginas");
 				double precio = resultados.getDouble("precio");
 				String titulo = resultados.getString("titulo");
-				Libro libro = new Libro(codigoLibro, codigoAutor, agnoPublicacion, numeroPaginas, precio, titulo);
+				Escritor escritor = new Escritor(codigoAutor);
+				Libro libro = new Libro(codigoLibro, escritor, agnoPublicacion, numeroPaginas, precio, titulo);
 				libros.add(libro);
 			}
 		}finally {
@@ -96,6 +97,29 @@ public class AccesoLibro {
 		}
 		
 		return libros;
+	}
+	
+	public static int insertarLibro (Libro lib) throws ClassNotFoundException, SQLException {
+		Connection conexion = null;
+        int filas = 0;
+        try {
+            conexion = ConfigBD.conectarseABD();
+            String codigoSQL = "INSERT INTO libro (codigo_escritor, titulo, agno_publicacion, numero_paginas, precio) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement sentencia = conexion.prepareStatement(codigoSQL);
+            sentencia.setInt(1, lib.getCodigoAutor());
+            sentencia.setString(2, lib.getTitulo());
+            sentencia.setInt(3, lib.getAgnoPublicacion());
+            sentencia.setInt(4, lib.getNumeroPaginas());
+            sentencia.setDouble(5, lib.getPrecio());
+            filas = sentencia.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConfigBD.desconectar(conexion);
+        }
+        return filas;
 	}
 	
 }
