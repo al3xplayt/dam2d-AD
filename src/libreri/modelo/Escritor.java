@@ -3,19 +3,19 @@ package libreri.modelo;
 public class Escritor {
 	private String nombre, nacionalidad;
 	private int codigo;
-	private Fecha fechaNacimiento, fecchaFallecimiento;
+	private Fecha fechaNacimiento, fechaFallecimiento;
 
 	public Escritor(String nombre, String nacionalidad, int codigo, String fechaNacimiento,
-			String fecchaFallecimiento) {
+			String fechaFallecimiento) {
 		super();
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
 		this.codigo = codigo;
 		this.fechaNacimiento = new Fecha(fechaNacimiento);
-		if (fecchaFallecimiento != null) {
-			this.fecchaFallecimiento = new Fecha(fecchaFallecimiento);
+		if (fechaFallecimiento != null) {
+			this.fechaFallecimiento = new Fecha(fechaFallecimiento);
 		} else {
-			this.fecchaFallecimiento = null;
+			this.fechaFallecimiento = null;
 		}
 
 	}
@@ -29,12 +29,12 @@ public class Escritor {
 
 	@Override
 	public String toString() {
-		if (this.fecchaFallecimiento == null) {
+		if (this.fechaFallecimiento == null) {
 			return "Escritor [nombre=" + nombre + ", nacionalidad=" + nacionalidad + ", codigo=" + codigo
 					+ ", fechaNacimiento=" + fechaNacimiento + "]";
 		} else {
 			return "Escritor [nombre=" + nombre + ", nacionalidad=" + nacionalidad + ", codigo=" + codigo
-					+ ", fechaNacimiento=" + fechaNacimiento + ", fecchaFallecimiento=" + fecchaFallecimiento + "]";
+					+ ", fechaNacimiento=" + fechaNacimiento + ", fecchaFallecimiento=" + fechaFallecimiento + "]";
 		}
 	}
 
@@ -55,7 +55,7 @@ public class Escritor {
 	}
 
 	public Fecha getFecchaFallecimiento() {
-		return fecchaFallecimiento;
+		return fechaFallecimiento;
 	}
 
 }
