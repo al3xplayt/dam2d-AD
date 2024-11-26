@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 nov 2024, 19:13:39 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="libreria" name="libreria.modelo.Disponibilidad" optimistic-lock="none" table="disponibilidad">
+        <composite-id class="libreria.modelo.DisponibilidadId" name="id">
+            <key-many-to-one class="libreria.modelo.Libro" name="libro">
+                <column name="codigo_libro"/>
+            </key-many-to-one>
+            <key-many-to-one class="libreria.modelo.Tienda" name="tienda">
+                <column name="codigo_tienda"/>
+            </key-many-to-one>
+        </composite-id>
+        <property name="cantidad" type="int">
+            <column name="cantidad" not-null="true"/>
+        </property>
+        <property name="fechaUltimaReposicion" type="date">
+            <column length="10" name="fecha_ultima_reposicion" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

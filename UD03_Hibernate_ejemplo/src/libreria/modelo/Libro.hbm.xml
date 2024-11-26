@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 nov 2024, 19:13:39 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="libreria" name="libreria.modelo.Libro" optimistic-lock="none" table="libro">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="codigo"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="libreria.modelo.Escritor" fetch="select" name="escritor">
+            <column name="codigo_escritor" not-null="true"/>
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column length="50" name="titulo" not-null="true"/>
+        </property>
+        <property name="agnoPublicacion" type="int">
+            <column name="agno_publicacion" not-null="true"/>
+        </property>
+        <property name="numeroPaginas" type="int">
+            <column name="numero_paginas" not-null="true"/>
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="precio" not-null="true" precision="5"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="disponibilidads" table="disponibilidad">
+            <key>
+                <column name="codigo_libro" not-null="true"/>
+            </key>
+            <one-to-many class="libreria.modelo.Disponibilidad"/>
+        </set>
+    </class>
+</hibernate-mapping>

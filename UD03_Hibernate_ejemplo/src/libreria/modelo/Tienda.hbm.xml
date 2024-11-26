@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 nov 2024, 19:13:39 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="libreria" name="libreria.modelo.Tienda" optimistic-lock="none" table="tienda">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="codigo"/>
+            <generator class="identity"/>
+        </id>
+        <property name="centroComercial" type="string">
+            <column length="20" name="centro_comercial"/>
+        </property>
+        <property name="direccion" type="string">
+            <column length="30" name="direccion" not-null="true"/>
+        </property>
+        <property name="localidad" type="string">
+            <column length="30" name="localidad" not-null="true"/>
+        </property>
+        <property name="telefono" type="string">
+            <column length="9" name="telefono" not-null="true" unique="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="disponibilidads" table="disponibilidad">
+            <key>
+                <column name="codigo_tienda" not-null="true"/>
+            </key>
+            <one-to-many class="libreria.modelo.Disponibilidad"/>
+        </set>
+    </class>
+</hibernate-mapping>

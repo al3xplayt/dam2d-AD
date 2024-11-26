@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 nov 2024, 19:13:39 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="libreria" name="libreria.modelo.Escritor" optimistic-lock="none" table="escritor">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="codigo"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="30" name="nombre" not-null="true" unique="true"/>
+        </property>
+        <property name="nacionalidad" type="string">
+            <column length="20" name="nacionalidad" not-null="true"/>
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column length="10" name="fecha_nacimiento" not-null="true"/>
+        </property>
+        <property name="fechaFallecimiento" type="date">
+            <column length="10" name="fecha_fallecimiento"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="libros" table="libro">
+            <key>
+                <column name="codigo_escritor" not-null="true"/>
+            </key>
+            <one-to-many class="libreria.modelo.Libro"/>
+        </set>
+    </class>
+</hibernate-mapping>

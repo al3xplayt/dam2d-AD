@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 26 nov 2024, 19:12:09 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="filmoteca" name="filmoteca.modelo.Personaje" optimistic-lock="none" table="personaje">
+        <composite-id class="filmoteca.modelo.PersonajeId" name="id">
+            <key-property name="codigoPelicula" type="int">
+                <column name="codigo_pelicula"/>
+            </key-property>
+            <key-property name="codigoActor" type="int">
+                <column name="codigo_actor"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="filmoteca.modelo.Actor" fetch="select" insert="false" name="actor" update="false">
+            <column name="codigo_actor" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="filmoteca.modelo.Pelicula" fetch="select" insert="false" name="pelicula" update="false">
+            <column name="codigo_pelicula" not-null="true"/>
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column length="30" name="nombre" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
