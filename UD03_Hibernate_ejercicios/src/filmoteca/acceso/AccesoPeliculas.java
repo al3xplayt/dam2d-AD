@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import filmoteca.modelo.Pelicula;
-public class accesoPeliculas {
+public class AccesoPeliculas {
 	public static List<Pelicula> consultarPeliculas() {
 		Session sesion = null;
 		try {
@@ -44,4 +44,6 @@ public class accesoPeliculas {
 			HibernateUtil.cerrarSesion(sesion);
 		}
 	}
+
+
 }

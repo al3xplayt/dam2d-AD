@@ -82,4 +82,12 @@ public class Actor implements java.io.Serializable {
 		this.personajes = personajes;
 	}
 
+	@Override
+	public String toString() {
+		return "Actor [codigo=" + codigo + ", nombre=" + nombre + ", nacionalidad=" + nacionalidad
+				+ ", fechaNacimiento=" + fechaNacimiento + ", fechaFallecimiento=" + fechaFallecimiento + "]";
+	}
+	
+	
+
 }

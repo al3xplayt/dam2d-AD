@@ -109,8 +109,11 @@ public class Pelicula implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		;
-		return "Pelicula [codigo=" + codigo + ", codigo saga=" + saga.getCodigo() + ", titulo=" + titulo + ", agnoEstreno=" + agnoEstreno
+		String cadenaSaga = "";
+		if (saga != null) {
+			cadenaSaga = ", codigo saga=" + saga.getCodigo();
+		}
+		return "Pelicula [codigo=" + codigo + cadenaSaga + ", titulo=" + titulo + ", agnoEstreno=" + agnoEstreno
 				+ ", duracion=" + duracion + ", recaudacion=" + recaudacion + ", puntuacion=" + puntuacion + "]";
 	} //", saga=" + saga.getNombre() +
 
