@@ -1,6 +1,7 @@
 package filmoteca.acceso;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import filmoteca.modelo.Actor;
 
@@ -22,13 +23,17 @@ public class AccesoActor {
 	public static void actualizarActor(Actor actor) {
 		Session sesion = null;
 		Transaction transaction = null;
+		Actor actorBD = null;
 		try {
 			sesion = HibernateUtil.abrirSesion();
-			sesion.beginTransaction();
-			sesion.update(actor);
-			sesion.getTransaction().commit();
-		} catch () {
-			
+			transaction = sesion.beginTransaction();
+			sesion.update(actor); //actualiza el objeto actor en la base de datos
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (transaction != null && transaction.isActive())
+				transaction.rollback();
+			throw e;
 		}
 		finally {
 			HibernateUtil.cerrarSesion(sesion);

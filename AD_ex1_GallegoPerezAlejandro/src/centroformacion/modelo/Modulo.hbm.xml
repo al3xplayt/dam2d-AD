@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3 dic 2024, 19:02:01 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="centroformacion" name="centroformacion.modelo.Modulo" optimistic-lock="none" table="modulo">
+        <id name="codigo" type="int">
+            <column name="codigo"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="centroformacion.modelo.Ciclo" fetch="select" name="ciclo">
+            <column name="codigo_ciclo" not-null="true"/>
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column length="50" name="nombre" not-null="true"/>
+        </property>
+        <property name="curso" type="string">
+            <column length="8" name="curso" not-null="true"/>
+        </property>
+        <property name="duracion" type="int">
+            <column name="duracion" not-null="true"/>
+        </property>
+        <property name="creditos" type="int">
+            <column name="creditos" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="lineaMatriculas" table="linea_matricula">
+            <key>
+                <column name="codigo_modulo" not-null="true"/>
+            </key>
+            <one-to-many class="centroformacion.modelo.LineaMatricula"/>
+        </set>
+    </class>
+</hibernate-mapping>

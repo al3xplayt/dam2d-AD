@@ -1,8 +1,11 @@
 package filmoteca.acceso;
 
+import java.math.BigDecimal;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import filmoteca.modelo.Pelicula;
@@ -43,6 +46,32 @@ public class AccesoPeliculas {
 		} finally {
 			HibernateUtil.cerrarSesion(sesion);
 		}
+	}
+
+	public static int eliminarPeliculasEntreRecaudaciones(BigDecimal recaudacion1, BigDecimal recaudacion2) {
+		Session sesion = null;
+		Transaction transaccion = null;
+		int numFilas = 0;
+		try {
+			sesion = HibernateUtil.abrirSesion();
+			transaccion = sesion.beginTransaction();
+			String hql = "DELETE FROM Pelicula AS pel WHERE recaudacion BETWEEN ?1 AND ?2";
+			Query consulta = sesion.createQuery(hql);
+			consulta.setParameter(1, recaudacion1);
+			consulta.setParameter(2, recaudacion2);
+			numFilas = consulta.executeUpdate();
+			transaccion.commit();
+			
+		} catch(HibernateException he){
+			if (transaccion != null && transaccion.isActive()) {
+				transaccion.rollback();
+			}
+			throw he;
+		
+	}finally {
+			HibernateUtil.cerrarSesion(sesion);
+		}
+		return numFilas;
 	}
 
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3 dic 2024, 19:02:01 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="centroformacion" name="centroformacion.modelo.LineaMatricula" optimistic-lock="none" table="linea_matricula">
+        <composite-id class="centroformacion.modelo.LineaMatriculaId" name="id">
+            <key-property name="codigoMatricula" type="int">
+                <column name="codigo_matricula"/>
+            </key-property>
+            <key-property name="codigoModulo" type="int">
+                <column name="codigo_modulo"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="centroformacion.modelo.Matricula" fetch="select" insert="false" name="matricula" update="false">
+            <column name="codigo_matricula" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="centroformacion.modelo.Modulo" fetch="select" insert="false" name="modulo" update="false">
+            <column name="codigo_modulo" not-null="true"/>
+        </many-to-one>
+        <property name="repetidor" type="int">
+            <column name="repetidor" not-null="true"/>
+        </property>
+        <property name="calificacion1" type="big_decimal">
+            <column name="calificacion_1" precision="3" scale="1"/>
+        </property>
+        <property name="calificacion2" type="big_decimal">
+            <column name="calificacion_2" precision="3" scale="1"/>
+        </property>
+    </class>
+</hibernate-mapping>

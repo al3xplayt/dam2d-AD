@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3 dic 2024, 19:02:01 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="centroformacion" name="centroformacion.modelo.Alumno" optimistic-lock="none" table="alumno">
+        <id name="codigo" type="int">
+            <column name="codigo"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="30" name="nombre" not-null="true" unique="true"/>
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column length="10" name="fecha_nacimiento" not-null="true"/>
+        </property>
+        <property name="domicilio" type="string">
+            <column length="50" name="domicilio" not-null="true"/>
+        </property>
+        <property name="telefono" type="string">
+            <column length="9" name="telefono" not-null="true" unique="true"/>
+        </property>
+        <property name="correo" type="string">
+            <column length="50" name="correo" not-null="true" unique="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="matriculas" table="matricula">
+            <key>
+                <column name="codigo_alumno" not-null="true"/>
+            </key>
+            <one-to-many class="centroformacion.modelo.Matricula"/>
+        </set>
+    </class>
+</hibernate-mapping>

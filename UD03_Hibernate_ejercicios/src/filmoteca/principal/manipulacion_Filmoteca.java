@@ -1,9 +1,11 @@
 package filmoteca.principal;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import entrada.Teclado;
+import filmoteca.acceso.AccesoPeliculas;
 import filmoteca.modelo.Actor;
 import filmoteca.modelo.Saga;
 
@@ -12,23 +14,19 @@ public class manipulacion_Filmoteca {
 		System.out.println("0) Salir");
 		System.out.println("1) Insertar una saga");
 		System.out.println("2) Actualizar un actor");
-		System.out.println("3) Eliminar un actor");
+		System.out.println("3) Eliminar peliculas entre dos recaudaciones");
 	}
 	
-	public static Date leerFecha(String mensaje) {
-		String cadena = Teclado.leerCadena(mensaje);
-		String [] datos = cadena.split("-");
-		
-		return new Date(Integer.parseInt(datos[0])-1900, Integer.parseInt(datos[1]), Integer.parseInt(datos[2])); // [1]
-	}
+
 
 	public static void main(String[] args) {
-		int opcion = 0, codigo;
+		int opcion = 0, codigo, contador;
 		String nombre, descripcion, nacionalidad, fechaNacimiento, fechaFallecimiento;
 		boolean vivo;
 		Saga saga;
 		Actor actor;
 		Date fechaFallecimientoDate;
+		BigDecimal recaudacion1, recaudacion2;
 		do {
 			escribirMenu();
 			opcion = Teclado.leerEntero("Introduce una opcion: ");
@@ -78,6 +76,16 @@ public class manipulacion_Filmoteca {
 						filmoteca.acceso.AccesoActor.actualizarActor(actor);
 						System.out.println("Actor actualizado correctamente");
 					}
+					break;
+				//Eliminar registros de peliculas entre dos recaudaciones
+				case 3:
+					recaudacion1 = new BigDecimal(Teclado.leerReal("recaudacion 1: "));
+					recaudacion2 = new BigDecimal(Teclado.leerReal("recaudacion 2: "));
+					contador = AccesoPeliculas.eliminarPeliculasEntreRecaudaciones(recaudacion1, recaudacion2);
+					String mensaje = (contador == 0) ? "No se ha eliminado ninguna pelicula" : "Se han eliminado " + contador + " peliculas";
+					System.out.println(mensaje);
+					break;
+					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -15,7 +15,7 @@ public class AccesoSaga {
 		try {
 			session = HibernateUtil.abrirSesion();
 			transaction =  session.beginTransaction();
-			session.save(saga);
+			session.save(saga); //insertart el obeto saga en la base de datos
 			transaction.commit();
 			
 		} catch (HibernateException e) {

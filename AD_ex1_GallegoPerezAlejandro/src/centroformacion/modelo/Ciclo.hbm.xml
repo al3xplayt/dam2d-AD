@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3 dic 2024, 19:02:01 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="centroformacion" name="centroformacion.modelo.Ciclo" optimistic-lock="none" table="ciclo">
+        <id name="codigo" type="int">
+            <column name="codigo"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="denominacion" type="string">
+            <column length="50" name="denominacion" not-null="true" unique="true"/>
+        </property>
+        <property name="familia" type="string">
+            <column length="50" name="familia" not-null="true"/>
+        </property>
+        <property name="nivel" type="string">
+            <column length="8" name="nivel" not-null="true"/>
+        </property>
+        <property name="duracion" type="int">
+            <column name="duracion" not-null="true"/>
+        </property>
+        <property name="agnoTitulo" type="int">
+            <column name="agno_titulo" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="modulos" table="modulo">
+            <key>
+                <column name="codigo_ciclo" not-null="true"/>
+            </key>
+            <one-to-many class="centroformacion.modelo.Modulo"/>
+        </set>
+    </class>
+</hibernate-mapping>
