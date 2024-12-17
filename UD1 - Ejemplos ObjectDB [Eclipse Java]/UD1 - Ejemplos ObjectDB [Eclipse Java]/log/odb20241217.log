@@ -1,0 +1,68 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-12-17 18:42:58 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD1 - Ejemplos ObjectDB [Eclipse Java]\data\campeonato.odb' is opened by 8264@A10-02
+
+[2024-12-17 18:42:58 #2 store] 
+Configuration path: ?
+
+[2024-12-17 18:42:58 #3 type] 
+Type modelo.Equipo is not enhanced.
+
+[2024-12-17 18:42:58 #4 type] 
+Type modelo.Jugador is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-12-17 18:43:28 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD1 - Ejemplos ObjectDB [Eclipse Java]\data\campeonato.odb' has been recovered (tr. 1-3)
+
+[2024-12-17 18:43:28 #2 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD1 - Ejemplos ObjectDB [Eclipse Java]\data\campeonato.odb' is opened by 12724@A10-02
+
+[2024-12-17 18:43:28 #3 store] 
+Configuration path: ?
+
+[2024-12-17 18:43:28 #4 type] 
+Type modelo.Equipo is not enhanced.
+
+[2024-12-17 18:43:28 #5 type] 
+Type modelo.Jugador is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-12-17 18:43:40 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD1 - Ejemplos ObjectDB [Eclipse Java]\data\campeonato.odb' is opened by 6196@A10-02
+
+[2024-12-17 18:43:40 #2 store] 
+Configuration path: ?
+
+[2024-12-17 18:43:40 #3 type] 
+Type modelo.Equipo is not enhanced.
+
+[2024-12-17 18:43:40 #4 type] 
+Type modelo.Jugador is not enhanced.
+
+[2024-12-17 18:43:40 #5 type] 
+Type modelo.Partido is not enhanced.
+
+[2024-12-17 18:43:41 #6 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD1 - Ejemplos ObjectDB [Eclipse Java]\data\campeonato.odb' is closed by 6196@A10-02
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2024-12-17 18:43:47 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD1 - Ejemplos ObjectDB [Eclipse Java]\data\campeonato.odb' is opened by 10540@A10-02
+
+[2024-12-17 18:43:47 #2 store] 
+Configuration path: ?
+
+[2024-12-17 18:43:47 #3 type] 
+Type modelo.Equipo is not enhanced.
+
+[2024-12-17 18:43:47 #4 type] 
+Type modelo.Jugador is not enhanced.
+
+[2024-12-17 18:43:47 #5 type] 
+Type modelo.Partido is not enhanced.
+
