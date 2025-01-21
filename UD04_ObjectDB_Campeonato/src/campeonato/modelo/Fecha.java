@@ -1,4 +1,4 @@
-package campeonato.modelo;
+        package campeonato.modelo;
 
 import javax.persistence.Embeddable;
 

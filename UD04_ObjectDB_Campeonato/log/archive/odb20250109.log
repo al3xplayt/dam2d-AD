@@ -1,0 +1,78 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-01-09 18:26:44 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD04_ObjectDB_Campeonato\data\campeonato.odb' is opened by 18024@A10-02
+
+[2025-01-09 18:26:44 #2 store] 
+Configuration path: ?
+
+[2025-01-09 18:26:44 #3 type] 
+Type campeonato.modelo.Jugador is not enhanced.
+
+[2025-01-09 18:26:44 #4 type] 
+Type campeonato.modelo.Equipo is not enhanced.
+
+[2025-01-09 18:26:44 #5 type] 
+Type campeonato.modelo.Fecha is not enhanced.
+
+[2025-01-09 18:26:44 #6 type] 
+Type campeonato.modelo.Partido is not enhanced.
+
+[2025-01-09 18:26:44 #7 type] 
+Type campeonato.modelo.Resultado is not enhanced.
+
+[2025-01-09 18:26:45 #8 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD04_ObjectDB_Campeonato\data\campeonato.odb' is closed by 18024@A10-02
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-01-09 18:57:17 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD04_ObjectDB_Campeonato\data\campeonato.odb' is opened by 16992@A10-02
+
+[2025-01-09 18:57:17 #2 store] 
+Configuration path: ?
+
+[2025-01-09 18:57:17 #3 type] 
+Type campeonato.modelo.Jugador is not enhanced.
+
+[2025-01-09 18:57:17 #4 type] 
+Type campeonato.modelo.Equipo is not enhanced.
+
+[2025-01-09 18:57:17 #5 type] 
+Type campeonato.modelo.Fecha is not enhanced.
+
+[2025-01-09 18:57:17 #6 type] 
+Type campeonato.modelo.Partido is not enhanced.
+
+[2025-01-09 18:57:17 #7 type] 
+Type campeonato.modelo.Resultado is not enhanced.
+
+[2025-01-09 18:57:17 #8 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD04_ObjectDB_Campeonato\data\campeonato.odb' is closed by 16992@A10-02
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2025-01-09 18:58:16 #1 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD04_ObjectDB_Campeonato\data\campeonato.odb' is opened by 16428@A10-02
+
+[2025-01-09 18:58:16 #2 store] 
+Configuration path: ?
+
+[2025-01-09 18:58:16 #3 type] 
+Type campeonato.modelo.Jugador is not enhanced.
+
+[2025-01-09 18:58:16 #4 type] 
+Type campeonato.modelo.Equipo is not enhanced.
+
+[2025-01-09 18:58:16 #5 type] 
+Type campeonato.modelo.Fecha is not enhanced.
+
+[2025-01-09 18:58:16 #6 type] 
+Type campeonato.modelo.Partido is not enhanced.
+
+[2025-01-09 18:58:16 #7 type] 
+Type campeonato.modelo.Resultado is not enhanced.
+
+[2025-01-09 18:58:16 #8 store] 
+Database 'E:\Curso 24-25\Acceso a datos\eclipse-workspace\UD04_ObjectDB_Campeonato\data\campeonato.odb' is closed by 16428@A10-02
+

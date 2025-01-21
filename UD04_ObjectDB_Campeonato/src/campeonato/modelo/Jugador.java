@@ -19,7 +19,7 @@ public class Jugador {
 	
 	
 	@Embedded private Fecha fechaNacimiento;
-	
+	private Equipo equipo;
 	public Jugador(String nombre) {
 		Random aleatorio = new Random();
 		
@@ -55,13 +55,21 @@ public class Jugador {
 	public void setFechaNacimiento(Fecha fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
 
+	public Equipo getEquipo() {
+        return equipo;
+	}
 	@Override
 	public String toString() {
 		return 
 			"Jugador [Código = " + codigo +
 			", Nombre = " + nombre + 
-			", FechaNacimiento = " + fechaNacimiento.toString() + 
+			", FechaNacimiento = " + fechaNacimiento + 
+			", Equipo = " + equipo.getNombre()+ 
 			"]";
 	}
 	
