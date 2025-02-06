@@ -1,5 +1,6 @@
 package inventario.acceso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.xmldb.api.base.Collection;
@@ -13,11 +14,11 @@ import inventario.modelo.Producto;
 
 public class AccesoProducto {
 
-	public static List<String> consultarTodos() throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException {
+	public static List<Producto> consultarTodos() throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException {
 		Collection coleccion = null;
-		List<String> listaProductos = null;
+		List<Producto> listaProductos = null;
 		try {
-			listaProductos = new java.util.ArrayList<String>();
+			listaProductos = new ArrayList<Producto>();
 			coleccion = ExistsDBUtil.abrirConexion();
 			XPathQueryService servicio = 
 					(XPathQueryService) coleccion.getService("XPathQueryService", "1.0");
@@ -27,8 +28,9 @@ public class AccesoProducto {
 			ResourceSet resultados = servicio.query(sentenciaConsultarTodos);
 			ResourceIterator iterador = resultados.getIterator();
 			while (iterador.hasMoreResources()) {
-				Resource recurso = iterador.nextResource();
-				String producto = (String) recurso.getContent();
+				Resource recurso = iterador.nextResource(); // Resource es un nodo del árbol XML
+				String elemento = (String) recurso.getContent(); // Get content devuelve el contenido del nodo
+				Producto producto = new Producto(elemento);
 				listaProductos.add(producto);
 			}
 		} finally  {
@@ -37,8 +39,8 @@ public class AccesoProducto {
 		return listaProductos;
 	}
 
-	public static String consultarPorCodigo(int codigo) throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException {
-		String producto = null;
+	public static Producto consultarPorCodigo(int codigo) throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException {
+		Producto producto = null;
 		Collection coleccion = null;
 		try {
 			coleccion = ExistsDBUtil.abrirConexion();
@@ -51,7 +53,8 @@ public class AccesoProducto {
 			ResourceIterator iterador = resultados.getIterator();
 			if (iterador.hasMoreResources()) {
 				Resource recurso = iterador.nextResource();
-				producto = (String) recurso.getContent();
+				String elemento = (String) recurso.getContent();
+				producto = new Producto(elemento);
 			}
 		} finally {
 			ExistsDBUtil.cerrarConexion(coleccion);
@@ -96,6 +99,30 @@ public class AccesoProducto {
 			ExistsDBUtil.cerrarConexion(coleccion);
 		}
 		
+	}
+
+	public static void actualizarProducto(Producto produc) throws XMLDBException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+		// TODO Auto-generated method stub
+		Collection coleccion = null;
+		try {
+			coleccion = ExistsDBUtil.abrirConexion();
+			XPathQueryService servicio = (XPathQueryService) coleccion.getService("XPathQueryService", "1.0");
+			
+			String sentenciaActualizarProducto = 
+					"update replace " +
+					"/productos/produc[cod_prod = " + produc.getCodigo() + "] with " +
+					"<produc>" +
+						"<cod_prod>" + produc.getCodigo() + "</cod_prod>" +
+						"<denominacion>" + produc.getDenominacion() + "</denominacion>" +
+						"<precio>" + String.format("%.2f", produc.getPrecio()) + "</precio>" +
+						"<stock_actual>" + produc.getStockActual() + "</stock_actual>" +
+						"<stock_minimo>" + produc.getStockMinimo() + "</stock_minimo>" +
+						"<cod_zona>" + produc.getCodigoZona() + "</cod_zona>" +
+					"</produc>";	
+			ResourceSet resultados2 = servicio.query(sentenciaActualizarProducto);
+		} finally {
+			ExistsDBUtil.cerrarConexion(coleccion);
+		}
 	}
 	
 }

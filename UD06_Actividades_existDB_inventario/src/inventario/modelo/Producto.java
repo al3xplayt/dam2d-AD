@@ -22,7 +22,20 @@ public class Producto {
 		return "Producto [codigo=" + codigo + ", denominacion=" + denominacion + ", precio=" + precio + ", stockActual="
 				+ stockActual + ", stockMinimo=" + stockMinimo + ", codigoZona=" + codigoZona + "]";
 	}
-
+	public Producto(String elemento) {
+		String texto = XMLUtil.extraerTexto(elemento, "cod_prod");
+		this.codigo = Integer.parseInt(texto);
+		this.denominacion =  XMLUtil.extraerTexto(elemento, "denominacion");
+		texto = XMLUtil.extraerTexto(elemento, "precio");
+		this.precio = Double.parseDouble(texto.replace(",", "."));
+		texto = XMLUtil.extraerTexto(elemento, "stock_actual");
+		this.stockActual = Integer.parseInt(texto);
+		texto = XMLUtil.extraerTexto(elemento, "stock_minimo");
+		this.stockMinimo = Integer.parseInt(texto);
+		texto = XMLUtil.extraerTexto(elemento, "cod_zona");
+		this.codigoZona = Integer.parseInt(texto);
+		
+	}
 	public int getCodigo() {
 		return codigo;
 	}
