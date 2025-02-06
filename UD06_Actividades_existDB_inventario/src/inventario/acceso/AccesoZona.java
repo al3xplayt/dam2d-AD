@@ -43,7 +43,7 @@ public class AccesoZona {
 			listaZonas = new ArrayList<Zona>();
 			XPathQueryService servicio = (XPathQueryService) coleccion.getService("XPathQueryService", "1.0");
 			String consulta = "for $zona in /zonas/zona " + " where $zona/director = '" + director + "'"
-					+ " order by $zona/nombre" + " return $zona";
+					+ " order by $zona/nombre ascending " + " return $zona";
 			ResourceSet resultados = servicio.query(consulta);
 			ResourceIterator iterador = resultados.getIterator();
 			while (iterador.hasMoreResources()) {
@@ -60,15 +60,14 @@ public class AccesoZona {
 
 	public static void eliminarPorDirector(String director)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException {
-		int filasAfectadas = 0;
 		Collection coleccion = null;
 		try {
 			coleccion = ExistsDBUtil.abrirConexion();
-		} finally {
-			ExistsDBUtil.cerrarConexion(coleccion);
 			XPathQueryService servicio = (XPathQueryService) coleccion.getService("XPathQueryService", "1.0");
 			String consulta = "update delete " + "/zonas/zona[director = '" + director + "']";
 			ResourceSet resultados = servicio.query(consulta);
+		} finally {
+			ExistsDBUtil.cerrarConexion(coleccion);
 		}
 	}
 }
